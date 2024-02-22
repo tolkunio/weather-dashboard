@@ -1,0 +1,11 @@
+.activity{
+  display: flex;
+  flex-direction: column;
+  >img{
+    border-radius: 1rem;
+  }
+  >span{
+    color: black;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,25 @@
+.activities{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--widget-bg-color);
+  border-radius: 4rem;
+  width: 100%;
+}
+.titleBlock{
+  padding-top: 2rem;
+  padding-left: 3.5rem;
+  >.img{
+
+  }
+  >span{
+    font-size: 2.4rem;
+    font-weight: 500;
+  }
+}
+.content{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  gap: 2rem;
+  padding: 3.4rem 5.4rem;
+}

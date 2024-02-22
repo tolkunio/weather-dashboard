@@ -1,0 +1,30 @@
+.navbarWidget {
+  border-radius: 4rem;
+  width: 10rem;
+  position: fixed;
+  z-index: 1;
+  top: 38rem;
+  left: 4rem;
+  background-color: var(--widget-bg-color);
+}
+
+.img {
+  padding: 2rem;
+}
+
+.elementsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .span {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+}
