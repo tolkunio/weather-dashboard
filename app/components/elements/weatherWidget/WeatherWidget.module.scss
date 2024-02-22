@@ -1,21 +1,99 @@
 .weatherWidget {
-
+  background-color: var(--widget-bg-color);
+  max-width: 32rem;
+  width: 100%;
+  border-radius: 4rem;
+  padding-top: 3.4rem;
+  padding-bottom: 4.7rem;
 }
 
 .weekdays {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3.6rem;
+}
+
+.daysBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.52rem;
+
+  &:hover {
+    >span{
+      font-size: 1.72rem;
+    }
+    >img{
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  > span {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+
+  }
+
+  > img {
+  }
 
 }
 
 .timeGmt {
+  text-align: center;
+  padding-top: 1.6rem;
+  padding-bottom: 3.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:0.2rem;
 
+  > img {
+
+  }
+
+  > span {
+    font-size: 1.7rem;
+    font-weight: 500;
+  }
 }
 
 .airConditions {
-
+  padding-left: 1.7rem;
+  > .title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding-left: 1.6rem;
+  }
 }
-.block{
 
+
+.airInfoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-top: 2rem;
 }
-.infoBlock{
-  
+
+.blockValues {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  > .desc {
+    font-size: 1.2rem;
+  }
+
+  > .temp {
+    font-size: 1.6rem;
+  }
 }

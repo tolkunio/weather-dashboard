@@ -7,7 +7,7 @@ type ActivityPropsType={
 const Activity = ({imgSrc,distance}:ActivityPropsType) => {
     return (
         <div className={s.activity}>
-            <Image src={imgSrc} width={178} height={108} alt={'img'} draggable={false}/>
+            <Image src={imgSrc} width={160} height={100} alt={'img'} draggable={false}/>
             <span>{distance}</span>
         </div>
     );

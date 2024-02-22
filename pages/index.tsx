@@ -19,9 +19,12 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
           <Layout>
-              <NavbarWidget/>
-              <MainContent/>
-              <WeatherWidget/>
+              <div className={styles.content}>
+                  <NavbarWidget/>
+                  <MainContent/>
+                  <WeatherWidget/>
+              </div>
+
           </Layout>
       </main>
     </>

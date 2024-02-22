@@ -22,26 +22,59 @@ const airConditions=[
         temp:'4'
     },
 ]
+const weekdays=[
+    {
+        week:'FR',
+        weekIcon:'/icons/weekDays/FR.svg'
+    },
+    {
+        week:'SAT',
+        weekIcon:'/icons/weekDays/SAT.svg'
+    },
+    {
+        week:'SUN',
+        weekIcon:'/icons/weekDays/SUN.svg'
+    },
+    {
+        week:'MON',
+        weekIcon:'/icons/weekDays/MON.svg'
+    },
+    {
+        week:'TUES',
+        weekIcon:'/icons/weekDays/TUES.svg'
+    },
+
+]
 const WeatherWidget = () => {
     return (
         <div className={s.weatherWidget}>
             <div className={s.weekdays}>
-                <span></span>
-                <Image/>
+                {
+                    weekdays.map(day=><div key={day.week} className={s.daysBlock}>
+                        <span>{day.week}</span>
+                        <Image src={day.weekIcon} width={24} height={24} alt={day.week}/>
+                    </div>)
+                }
             </div>
             <div className={s.timeGmt}>
-                <Image/>
-                <span></span>
+                <Image src={'/icons/clock.svg'} width={20} height={20} alt={'clock'}/>
+                <span>8:00PM GMT</span>
             </div>
             <div className={s.airConditions}>
-                {airConditions.map(item=><div key={item.iconUrl} className={s.block}>
-                    <Image/>
-                    <div className={s.infoBlock}>
-                        <span>{item.desc}</span>
-                        <span>{item.temp}</span>
-                    </div>
+                <span className={s.title}>AIR CONDITIONS</span>
+                <div className={s.airInfoBlock}>
+                    {
+                        airConditions.map(item=>
+                            <div key={item.iconUrl} className={s.blockValues}>
+                                <Image src={item.iconUrl} width={25} height={25} alt={item.desc}/>
+                                <div className={s.info}>
+                                    <span className={s.desc}>{item.desc}</span>
+                                    <span className={s.temp}>{item.temp}</span>
+                                </div>
+                            </div>)
+                    }
+                </div>
 
-                </div>)}
             </div>
         </div>
     );
