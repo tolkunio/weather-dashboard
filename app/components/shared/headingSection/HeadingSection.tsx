@@ -1,7 +1,10 @@
 import s from './HeadingSection.module.scss';
 import Image from "next/image";
+import {useCurrentWeather} from "@/app/hooks/useCurrentWeather";
 
 const HeadingSection = () => {
+    const result=useCurrentWeather();
+    console.log(result);
     return (
         <header className={s.header}>
             <div className={s.flexWrapper}>
