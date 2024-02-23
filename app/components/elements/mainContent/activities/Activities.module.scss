@@ -1,9 +1,11 @@
 .activities{
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   background-color: var(--widget-bg-color);
   border-radius: 4rem;
   width: 100%;
+  margin-bottom: 4.8rem;
 }
 .titleBlock{
   padding-top: 2rem;
@@ -19,6 +21,7 @@
 .content{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-self: center;
   gap: 2rem;
   padding: 3.4rem 5.4rem;

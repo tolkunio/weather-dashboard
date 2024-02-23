@@ -1,27 +1,27 @@
 import s from './WeatherWidget.module.scss';
 import Image from "next/image";
-const airConditions=[
-    {
-        iconUrl:'/icons/temp.svg',
-        desc:'Real Feel',
-        temp:'30°'
-    },
-    {
-        iconUrl:'/icons/wind.svg',
-        desc:'Wind',
-        temp:'0.8 km/hr'
-    },
-    {
-        iconUrl:'/icons/drop.svg',
-        desc:'Chance of rain',
-        temp:'2%'
-    },
-    {
-        iconUrl:'/icons/sun.svg',
-        desc:'UV Index',
-        temp:'4'
-    },
-]
+import {useCurrentWeather} from "@/app/hooks/useCurrentWeather";
+let tempCondition={
+    iconUrl:'/icons/temp.svg',
+    desc:'Real Feel',
+    temp:'30'
+};
+let windCondition={
+    iconUrl:'/icons/wind.svg',
+    desc:'Wind',
+    speed:'0.8 km/hr'
+}
+let rainCondition={
+    iconUrl:'/icons/drop.svg',
+    desc:'Chance of rain',
+    precipitation:'2%'
+}
+let visibilityCondition={
+    iconUrl:'/icons/sun.svg',
+    desc:'Visibility',
+    value :'4'
+}
+
 const weekdays=[
     {
         week:'FR',
@@ -46,6 +46,15 @@ const weekdays=[
 
 ]
 const WeatherWidget = () => {
+    const {status,data}=useCurrentWeather();
+    if(status==='success'){
+        let currentData=data.list[0];
+        tempCondition.temp=`${currentData.main.feels_like}°`;
+        windCondition.speed=currentData.wind.speed;
+        rainCondition.precipitation=currentData.pop;
+        visibilityCondition.value=currentData.visibility;
+    }
+    const time = new Date().toLocaleTimeString();
     return (
         <div className={s.weatherWidget}>
             <div className={s.weekdays}>
@@ -58,21 +67,39 @@ const WeatherWidget = () => {
             </div>
             <div className={s.timeGmt}>
                 <Image src={'/icons/clock.svg'} width={20} height={20} alt={'clock'}/>
-                <span>8:00PM GMT</span>
+                <span>{time}</span>
             </div>
             <div className={s.airConditions}>
                 <span className={s.title}>AIR CONDITIONS</span>
                 <div className={s.airInfoBlock}>
-                    {
-                        airConditions.map(item=>
-                            <div key={item.iconUrl} className={s.blockValues}>
-                                <Image src={item.iconUrl} width={25} height={25} alt={item.desc}/>
-                                <div className={s.info}>
-                                    <span className={s.desc}>{item.desc}</span>
-                                    <span className={s.temp}>{item.temp}</span>
-                                </div>
-                            </div>)
-                    }
+                    <div className={s.blockValues}>
+                        <Image src={tempCondition.iconUrl} width={25} height={25} alt={tempCondition.desc}/>
+                        <div className={s.info}>
+                            <span className={s.desc}>{tempCondition.desc}</span>
+                            <span className={s.temp}>{tempCondition.temp}</span>
+                        </div>
+                    </div>
+                    <div className={s.blockValues}>
+                        <Image src={windCondition.iconUrl} width={25} height={25} alt={windCondition.desc}/>
+                        <div className={s.info}>
+                            <span className={s.desc}>{windCondition.desc}</span>
+                            <span className={s.temp}>{windCondition.speed}</span>
+                        </div>
+                    </div>
+                    <div className={s.blockValues}>
+                        <Image src={rainCondition.iconUrl} width={25} height={25} alt={rainCondition.desc}/>
+                        <div className={s.info}>
+                            <span className={s.desc}>{rainCondition.desc}</span>
+                            <span className={s.temp}>{rainCondition.precipitation}%</span>
+                        </div>
+                    </div>
+                    <div className={s.blockValues}>
+                        <Image src={visibilityCondition.iconUrl} width={25} height={25} alt={visibilityCondition.desc}/>
+                        <div className={s.info}>
+                            <span className={s.desc}>{visibilityCondition.desc}</span>
+                            <span className={s.temp}>{visibilityCondition.value}</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>

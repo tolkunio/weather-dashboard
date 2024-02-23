@@ -1,5 +1,8 @@
 .header {
   padding: 4rem 9rem 0rem 9rem;
+  @media screen and (max-width: 430px) {
+    
+  }
 }
 
 .flexWrapper {

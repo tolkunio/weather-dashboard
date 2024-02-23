@@ -1,0 +1,16 @@
+.forecastElement{
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  color: var(--font-color);
+  >span{
+    font-size: 1.4rem;
+  }
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  >span{
+    font-size: 0.8rem;
+  }
+}

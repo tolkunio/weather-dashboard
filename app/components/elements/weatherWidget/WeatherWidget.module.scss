@@ -5,6 +5,10 @@
   border-radius: 4rem;
   padding-top: 3.4rem;
   padding-bottom: 4.7rem;
+
+  @media screen and (max-width: 430px) {
+    display: none;
+  }
 }
 
 .weekdays {

@@ -1,17 +1,23 @@
 export interface IWeather{
-    cityName:string,
-    weatherDesc:string,
-    lists:Array<IList>
+    city:ICity,
+    lists?:Array<IList>
+}
+export interface ICity{
+    name:string,
+    timezone:number
 }
 export interface IList{
+    main:IMain,
+    wind:IWind,
     dateTime:string,
-    temp:string,
+}
+export interface IMain{
+    temp:number,
     feels_like:number,
     temp_min:number,
     temp_max:number,
     pressure:string,
-    humidity:string,
-    wind:IWind
+    humidity:string
 }
 export interface IWind{
     speed:string,

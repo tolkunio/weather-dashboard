@@ -1,17 +1,35 @@
 .forecast{
-
   width: 100%;
   background-color: var(--widget-bg-color);
   border-radius: 4rem;
 }
 .titleBlock{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
   padding-top: 1.3rem;
-  padding-left: 3.5rem;
+  padding-left: 3rem;
+  padding-bottom: 4.2rem;
   >span{
     padding-left: 0.5rem;
     font-size: 1.4rem;
   }
 }
 .forecastChart{
-
+  position: relative;
+  z-index: 200;
+  padding-top: 1.2rem;
+  padding-left: 3.5rem;
+  padding-bottom: 5.2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 6.2rem;
+}
+.img{
+  top:-0.5rem;
+  left: 0;
+  position: absolute;
+  z-index: 100;
 }
