@@ -6,16 +6,22 @@
   border-radius: 4rem;
   width: 100%;
   margin-bottom: 4.8rem;
+
+  @media screen and (max-width: 430px) {
+    display: none;
+  }
 }
 .titleBlock{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:0.4rem;
   padding-top: 2rem;
-  padding-left: 3.5rem;
+  padding-left: 3rem;
   >.img{
-
   }
   >span{
     font-size: 2.4rem;
-    font-weight: 500;
   }
 }
 .content{
@@ -24,5 +30,5 @@
   flex-wrap: wrap;
   align-self: center;
   gap: 2rem;
-  padding: 3.4rem 5.4rem;
+  padding: 3.4rem 1rem;
 }

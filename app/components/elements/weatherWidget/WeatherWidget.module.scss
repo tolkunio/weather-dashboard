@@ -1,14 +1,5 @@
 .weatherWidget {
-  background-color: var(--widget-bg-color);
-  max-width: 32rem;
-  width: 100%;
-  border-radius: 4rem;
-  padding-top: 3.4rem;
-  padding-bottom: 4.7rem;
 
-  @media screen and (max-width: 430px) {
-    display: none;
-  }
 }
 
 .weekdays {
@@ -16,6 +7,16 @@
   flex-direction: row;
   justify-content: center;
   gap: 3.6rem;
+  padding: 3.4rem 2rem 0 2rem;
+  border-radius: 4rem 4rem 0 0;
+  background-color: var(--widget-bg-color);
+  @media screen and (max-width: 430px) {
+    position: absolute;
+    border-radius:0;
+    background-color: var(--bg-color);
+    top: 45.5rem;
+    left: 3.2rem;
+  }
 }
 
 .daysBlock {
@@ -47,6 +48,7 @@
 }
 
 .timeGmt {
+  background-color: var(--widget-bg-color);
   text-align: center;
   padding-top: 1.6rem;
   padding-bottom: 3.4rem;
@@ -63,14 +65,23 @@
     font-size: 1.7rem;
     font-weight: 500;
   }
+  @media screen and (max-width: 430px) {
+   display: none;
+  }
 }
 
 .airConditions {
+  background-color: var(--widget-bg-color);
+  padding-bottom: 4.7rem;
   padding-left: 1.7rem;
+  border-radius: 0rem 0rem 4rem 4rem;
   > .title {
     font-size: 1.4rem;
     font-weight: 700;
     padding-left: 1.6rem;
+  }
+  @media screen and (max-width: 430px) {
+    display: none;
   }
 }
 

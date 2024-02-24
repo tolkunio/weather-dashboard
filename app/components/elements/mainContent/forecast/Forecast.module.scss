@@ -1,9 +1,15 @@
-.forecast{
+.forecast {
   width: 100%;
   background-color: var(--widget-bg-color);
   border-radius: 4rem;
+  @media screen and (max-width: 430px) {
+    border-radius: 1rem;
+    padding-bottom: 1.9rem;
+
+  }
 }
-.titleBlock{
+
+.titleBlock {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -12,12 +18,14 @@
   padding-top: 1.3rem;
   padding-left: 3rem;
   padding-bottom: 4.2rem;
-  >span{
+
+  > span {
     padding-left: 0.5rem;
     font-size: 1.4rem;
   }
 }
-.forecastChart{
+
+.forecastChart {
   position: relative;
   z-index: 200;
   padding-top: 1.2rem;
@@ -26,10 +34,36 @@
   display: flex;
   flex-direction: row;
   gap: 6.2rem;
+  @media screen and (max-width: 430px) {
+    padding-left: 0.7rem;
+    padding-bottom: 3.2rem;
+
+  }
+
 }
-.img{
-  top:-0.5rem;
+
+.img {
+  top: -0.5rem;
   left: 0;
   position: absolute;
   z-index: 100;
+  @media screen and (max-width: 430px) {
+    display: none;
+
+  }
+}
+.btn{
+  display: block;
+  margin: 0 auto;
+  padding: 0.8rem 4.3rem;
+  font-size: 1.2rem;
+  color: var(--font-color);
+  background-color: #EACA8F;
+  border: none;
+  border-radius: 1.6rem;
+
+  @media screen and (min-width: 431px) {
+    display: none;
+
+  }
 }

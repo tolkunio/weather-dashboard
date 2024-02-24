@@ -13,13 +13,14 @@ const Forecast = () => {
                 <span>24-hour forecast</span>
             </div>
             <div className={s.forecastChart}>
-                <Image className={s.img} src={'/images/vector.png'} width={730} height={63}/>
+                <Image className={s.img} src='/images/vector.png' width={730} height={63}/>
                 {status === 'success' && data.list.map(item =>
                     <ForecastElement key={item.dt}
                                      temp={item.main.temp}
                                      time={item.dt_txt.substring(11, 16)}
                                      wind={item.wind.speed}/>).splice(0,7)}
             </div>
+            <button className={s.btn}>5-day forecast</button>
         </div>
     );
 };

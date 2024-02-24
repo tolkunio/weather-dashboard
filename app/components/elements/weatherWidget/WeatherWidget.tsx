@@ -46,6 +46,7 @@ const weekdays=[
 
 ]
 const WeatherWidget = () => {
+
     const {status,data}=useCurrentWeather();
     if(status==='success'){
         let currentData=data.list[0];
