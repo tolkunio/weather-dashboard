@@ -1,6 +1,6 @@
 import s from './ForecastElement.module.scss';
 import Image from "next/image";
-type ForecastELementPropsType={
+export type ForecastELementPropsType={
         temp:number,
         wind:string,
         time:string

@@ -1,8 +1,8 @@
 import s from './WeatherWidget.module.scss';
 import Image from "next/image";
 import {useCurrentWeatherByLocation} from "@/app/hooks/useCurrentWeather";
+import {useEffect} from "react";
 import {ICoordination} from "@/app/mock/mockForLocations";
-import {getItem} from "@/app/services/localStorageService";
 
 let tempCondition = {
     iconUrl: '/icons/temp.svg',
@@ -49,14 +49,22 @@ const weekdays = [
 
 ]
 const WeatherWidget = () => {
-    //default coordinate:New York
+    let time='6:00';
     const initialCoord: ICoordination = {lat: '-75.499901', lon: '-75.499901'};
-    let time:'';
-    const parsedSelectCoord =getItem<ICoordination>('selectCoord')??initialCoord;
+    let parsedSelectCoord;
+    useEffect(() => {
+        const selectCoord=localStorage.getItem('selectCoord');
+        if(selectCoord!==null){
+            parsedSelectCoord=JSON.parse(selectCoord);
+        }
+        else {
+            parsedSelectCoord=initialCoord;
+        }
+    }, []);
     const {status, data} = useCurrentWeatherByLocation(parsedSelectCoord)
     if (status === 'success') {
         let currentData = data.list[0];
-        time=currentData.dt_txt.substring(11,16);
+        time=currentData.dt_txt.substring(11,16)
         tempCondition.temp = `${currentData.main.feels_like}°`;
         windCondition.speed = currentData.wind.speed;
         rainCondition.precipitation = currentData.pop;

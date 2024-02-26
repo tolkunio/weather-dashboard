@@ -6,7 +6,6 @@ import {ICoordination} from "@/app/mock/mockForLocations";
 import DropDown from "@/app/components/shared/dropDown/DropDown";
 import {useCurrentWeatherByLocation} from "@/app/hooks/useCurrentWeather";
 import {IHeadingSection} from "@/app/types/IWeather";
-import {setItem} from "@/app/services/localStorageService";
 
 let initialData: IHeadingSection = {
     cityName: 'New York',
@@ -41,7 +40,7 @@ const HeadingSection = () => {
 
     const coordSelection = (coord: ICoordination): void => {
         setSelectCoord(coord);
-        setItem<ICoordination>(coord,'selectCoord');
+        localStorage.setItem(JSON.stringify(coord),'selectCoord');
     };
 
     const toggleDropDown = () => {
