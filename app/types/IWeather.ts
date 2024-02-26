@@ -2,7 +2,7 @@ import {ICoordination} from "@/app/mock/mockForLocations";
 
 export interface IWeather{
     city:ICity,
-    lists?:Array<IList>
+    list?:Array<IList>
 }
 export interface ICity{
     name:string,
