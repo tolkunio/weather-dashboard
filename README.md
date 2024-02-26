@@ -1,40 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather Dashboard
 
-## Getting Started
+---
 
-First, run the development server:
+## Overview
+Weather Dashboard is a web application built with Next.js and SCSS Modules, allowing users to check the current weather conditions of various locations. 
+It provides real-time weather data including temperature, weather conditions, and other relevant information.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- Display current weather conditions for a specified location.
+- Allow users to search for weather information by city name.
+- Provide detailed weather data including temperature, humidity, wind speed, and more.
+- Support for multiple locations, allowing users to add and remove locations as needed.
+- User-friendly interface with intuitive controls and visual representations of weather data.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
+- React.js for building the user interface.
+- OpenWeatherMap API for fetching weather data.
+- SCSS modulefor styling and layout.
+- Next.js project bootstrapped with create-next-app.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Installation
+To run the Weather Dashboard locally on your machine, follow these steps:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Clone the repository:
+git clone https://github.com/tolkunio/weather-dashboard.git
+2. Navigate to the project directory:
+cd weather-dashboard
+3. Install dependencies using npm:npm install
+4. Start the development server:npm run dev 
+5. Open your web browser and navigate to `http://localhost:3000` to view the application.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Usage
+- Enter the name of a city in the search bar and press Enter or click the search button to fetch the weather data for that location.
+- The weather information for the specified city will be displayed on the screen, including temperature, weather conditions, humidity, wind speed, and other relevant details.
+- You can add multiple locations to the dashboard by searching for them individually.
+- To remove a location from the dashboard, click on the delete button next to the location.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contributing
+Contributions are welcome! If you'd like to contribute to Weather Dashboard, please fork the repository and submit a pull request with your changes.
 
-## Learn More
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-To learn more about Next.js, take a look at the following resources:
+---
+Feel free to customize the README file according to your project's specific details and requirements.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
