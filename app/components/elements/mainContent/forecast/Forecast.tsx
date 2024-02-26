@@ -3,13 +3,13 @@ import s from './Forecast.module.scss';
 import ForecastElement from "@/app/components/elements/mainContent/forecast/ForecastElement/ForecastElement";
 import {useCurrentWeatherByLocation} from "@/app/hooks/useCurrentWeather";
 import {ICoordination} from "@/app/mock/mockForLocations";
-import {loadState} from "@/app/services/localStorageService";
+import {getItem} from "@/app/services/localStorageService";
 
 const Forecast = () => {
     //default coordinate:New York
     const initialCoord: ICoordination = {lat: '-75.499901', lon: '-75.499901'};
 
-    const parsedSelectCoord =loadState<ICoordination>('selectCoord')??initialCoord;
+    const parsedSelectCoord =getItem<ICoordination>('selectCoord')??initialCoord;
 
     const {status, data} = useCurrentWeatherByLocation(parsedSelectCoord);
     return (

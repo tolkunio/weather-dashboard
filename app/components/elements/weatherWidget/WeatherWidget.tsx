@@ -2,7 +2,7 @@ import s from './WeatherWidget.module.scss';
 import Image from "next/image";
 import {useCurrentWeatherByLocation} from "@/app/hooks/useCurrentWeather";
 import {ICoordination} from "@/app/mock/mockForLocations";
-import {loadState} from "@/app/services/localStorageService";
+import {getItem} from "@/app/services/localStorageService";
 
 let tempCondition = {
     iconUrl: '/icons/temp.svg',
@@ -52,7 +52,7 @@ const WeatherWidget = () => {
     //default coordinate:New York
     const initialCoord: ICoordination = {lat: '-75.499901', lon: '-75.499901'};
     let time:'';
-    const parsedSelectCoord =loadState<ICoordination>('selectCoord')??initialCoord;
+    const parsedSelectCoord =getItem<ICoordination>('selectCoord')??initialCoord;
     const {status, data} = useCurrentWeatherByLocation(parsedSelectCoord)
     if (status === 'success') {
         let currentData = data.list[0];
