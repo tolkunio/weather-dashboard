@@ -1,11 +1,17 @@
 import Image from "next/image";
 import s from './Forecast.module.scss';
-import vector from './../../../../../public/images/vector.png';
-import {useCurrentWeather} from "@/app/hooks/useCurrentWeather";
 import ForecastElement from "@/app/components/elements/mainContent/forecast/ForecastElement/ForecastElement";
+import {useCurrentWeatherByLocation} from "@/app/hooks/useCurrentWeather";
+import {ICoordination} from "@/app/mock/mockForLocations";
+import {loadState} from "@/app/services/localStorageService";
 
 const Forecast = () => {
-    const {status, data} = useCurrentWeather();
+    //default coordinate:New York
+    const initialCoord: ICoordination = {lat: '-75.499901', lon: '-75.499901'};
+
+    const parsedSelectCoord =loadState<ICoordination>('selectCoord')??initialCoord;
+
+    const {status, data} = useCurrentWeatherByLocation(parsedSelectCoord);
     return (
         <div className={s.forecast}>
             <div className={s.titleBlock}>

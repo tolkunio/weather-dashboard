@@ -1,3 +1,5 @@
+import {ICoordination} from "@/app/mock/mockForLocations";
+
 export interface IWeather{
     city:ICity,
     lists?:Array<IList>
@@ -22,4 +24,10 @@ export interface IMain{
 export interface IWind{
     speed:string,
     dust:string
+}
+export interface IHeadingSection{
+    cityName: string,
+    temp: number,
+    weatherState: string,
+    coordination:ICoordination,
 }
