@@ -12,7 +12,7 @@ export const mockLocations:ILocation[]=[
         id:Math.random(),
         city:'Moskva',
         coord:{
-            lat:'69.627747',
+            lat:'55.75222',
             lon:'37.661968'
         }
     },

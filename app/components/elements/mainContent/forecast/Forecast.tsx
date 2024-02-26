@@ -10,7 +10,6 @@ const Forecast = () => {
     const initialCoord: ICoordination = {lat: '-75.499901', lon: '-75.499901'};
 
     const parsedSelectCoord =getItem<ICoordination>('selectCoord')??initialCoord;
-
     const {status, data} = useCurrentWeatherByLocation(parsedSelectCoord);
     return (
         <div className={s.forecast}>
@@ -19,7 +18,7 @@ const Forecast = () => {
                 <span>24-hour forecast</span>
             </div>
             <div className={s.forecastChart}>
-                <Image className={s.img} src='/images/vector.png' width={730} height={63}/>
+                <Image className={s.img} src='/images/vector.png' width={730} height={63} alt={'vector'}/>
                 {status === 'success' && data.list.map(item =>
                     <ForecastElement key={item.dt}
                                      temp={item.main.temp}
