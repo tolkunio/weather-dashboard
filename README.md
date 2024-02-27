@@ -1,7 +1,7 @@
 # Weather Dashboard
 [Demo](https://weather-dashboard-six-lemon.vercel.app/)
 <p align="center">
-    <img src="https://ibb.co/XtfQ433" alt="Project logo" border="0">
+   <img src="https://i.ibb.co/BBHpPrr/weather.png" alt="weather" border="0">
 </p>
 
 ---
