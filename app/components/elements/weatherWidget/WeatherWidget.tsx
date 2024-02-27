@@ -20,7 +20,7 @@ let rainCondition = {
     precipitation: '2%'
 }
 let visibilityCondition = {
-    iconUrl: '/icons/sun.svg',
+    iconUrl: '/icons/Sun.svg',
     desc: 'Visibility',
     value: '4'
 }
