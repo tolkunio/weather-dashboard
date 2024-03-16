@@ -1,0 +1,19 @@
+.card{
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+
+  > .desc {
+    font-size: 1.2rem;
+  }
+
+  > .value {
+    font-size: 1.6rem;
+  }
+}

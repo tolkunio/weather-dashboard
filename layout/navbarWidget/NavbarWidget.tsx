@@ -1,40 +1,48 @@
-import s from './NavbarWidget.module.scss';
+import s from './NavbarWidget.module.scss'
 import Image from "next/image";
+import Weather from "@/assets/icons/components/Weather";
+import {MenuItem} from "@/interfaces/menu-interface";
+import Explore from "@/assets/icons/components/Explore";
+import City from "@/assets/icons/components/City";
+import Settings from "@/assets/icons/components/Settings";
 
-const menuItems = [
+const menuItems: MenuItem[] = [
     {
-        iconSrc: '/icons/weather.svg',
-        title: 'weather'
+        icon: <Weather/>,
+        title: 'weather',
+        route: 'weather'
     },
     {
-        iconSrc: '/icons/explore.svg',
-        title: 'explore'
+        icon: <Explore/>,
+        title: 'explore',
+        route: 'explore'
     },
     {
-        iconSrc: '/icons/cities.svg',
-        title: 'cities'
+        icon: <City/>,
+        title: 'cities',
+        route: 'city'
     }, {
-        iconSrc: '/icons/settings.svg',
-        title: 'settings'
+        icon: <Settings/>,
+        title: 'settings',
+        route: 'settings'
     },
 
 ]
 const NavbarWidget = () => {
     return (
         <nav className={s.navbarWidget}>
-            <Image className={s.img} src='/icons/avatar.svg' width={60} height={60} alt='avatar'/>
+            <Image src='/images/avatar.png' width={60} height={60} alt='avatar'/>
             <div className={s.elementsBlock}>
                 {
                     menuItems.map(item =>
                         (
-                            <div key={item.iconSrc} className={s.element}>
-                                <Image src={item.iconSrc} width={50} height={50} alt={item.title}/>
+                            <div key={item.route} className={s.element}>
+                                {item.icon}
                                 <span>{item.title}</span>
                             </div>
                         ))
                 }
             </div>
-
         </nav>
     );
 };

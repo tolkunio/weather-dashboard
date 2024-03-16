@@ -4,6 +4,7 @@ import ForecastElement from "@/layout/mainContent/forecast/ForecastElement/Forec
 import {useCurrentWeatherByLocation} from "@/hooks/useCurrentWeather";
 import {ICoordination} from "@/mock/mockForLocations";
 import {useEffect} from "react";
+import {Clock} from "@/assets/icons";
 
 const Forecast = () => {
     //default coordinate:New York
@@ -24,7 +25,7 @@ const Forecast = () => {
     return (
         <div className={s.forecast}>
             <div className={s.titleBlock}>
-                <Image src={'/icons/clock.svg'} width={16} height={16} alt={'clock'} draggable={false}/>
+                <Clock/>
                 <span>24-hour forecast</span>
             </div>
             <div className={s.forecastChart}>

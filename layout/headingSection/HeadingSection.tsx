@@ -1,11 +1,14 @@
 import s from './HeadingSection.module.scss';
 import Image from "next/image";
-import {useState,useEffect} from "react";
+import {useState, useEffect} from "react";
 import {mockLocations} from "@/mock/mockForLocations";
 import {ICoordination} from "@/mock/mockForLocations";
-import DropDown from "@/components/dropDown/DropDown";
+import DropDown from "@/components/DropDown/DropDown";
 import {useCurrentWeatherByLocation} from "@/hooks/useCurrentWeather";
 import {IHeadingSection} from "@/types/IWeather";
+import {Location} from "@/assets/icons";
+import {Arrow} from "@/assets/icons";
+import {Cloud} from "@/assets/icons";
 
 let initialData: IHeadingSection = {
     cityName: 'New York',
@@ -18,7 +21,7 @@ const HeadingSection = () => {
     const [headingData, setHeadingData] = useState<IHeadingSection>(initialData);
     const [showDropDown, setShowDropDown] = useState<boolean>(false);
     const [selectCoord, setSelectCoord] = useState<ICoordination>(initialData.coordination);
-    const {data, status, isLoading, isSuccess,refetch} = useCurrentWeatherByLocation(selectCoord);
+    const {data, status, isLoading, isSuccess, refetch} = useCurrentWeatherByLocation(selectCoord);
     const currentDate = new Date().toDateString();
 
     useEffect(() => {
@@ -35,12 +38,12 @@ const HeadingSection = () => {
             }
             setHeadingData(newHeadingData);
         }
-    }, [data,status]);
+    }, [data, status]);
 
 
     const coordSelection = (coord: ICoordination): void => {
         setSelectCoord(coord);
-        localStorage.setItem(JSON.stringify(coord),'selectCoord');
+        localStorage.setItem(JSON.stringify(coord), 'selectCoord');
     };
 
     const toggleDropDown = () => {
@@ -49,10 +52,10 @@ const HeadingSection = () => {
     return (
         <header className={s.header}>
             <div className={s.location}>
-                <Image src='/icons/location.svg' width={18} height={25} alt='location'/>
+                <Location/>
                 <span className={s.city}>{headingData.cityName}</span>
                 <button className={s.dropDownToggle} onClick={toggleDropDown}>
-                    <Image src='/icons/arrow.svg' width={20} height={15} alt='arrow'/>
+                    <Arrow/>
                 </button>
                 {
                     showDropDown && (<div className={s.dropDown}>
@@ -63,11 +66,11 @@ const HeadingSection = () => {
                 }
             </div>
             <div className={s.navbarWidget}>
-                <Image src='/icons/avatar.svg' width={30} height={30} alt='avatar'/>
+                <Image src='/images/avatar.png' width={30} height={30} alt='avatar'/>
             </div>
             <span className={s.weatherState}>{headingData.weatherState}</span>
             <div className={s.imgInfoBlock}>
-                <Image className={s.imgBlock} src='/icons/cloud.svg' width={0} height={0} alt='cloud'/>
+                <Cloud/>
                 <div className={s.infoBlock}>
                     <span className={s.temp}>{Math.round(headingData.temp)}°C</span>
                     <span className={s.dateInfo}>{currentDate}</span>

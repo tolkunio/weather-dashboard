@@ -1,6 +1,7 @@
 import s from './Activities.module.scss';
 import Image from "next/image";
 import Activity from "@/layout/mainContent/activities/activity/Activity";
+import {Heart} from "@/assets/icons";
 
 const activites = [
     {
@@ -26,7 +27,7 @@ const Activities = () => {
     return (
         <div className={s.activities}>
             <div className={s.titleBlock}>
-                <Image src={'/icons/heart.svg'} width={21} height={18} alt={'heart'}/>
+               <Heart/>
                 <span>Activities in your area</span>
             </div>
             <div className={s.content}>

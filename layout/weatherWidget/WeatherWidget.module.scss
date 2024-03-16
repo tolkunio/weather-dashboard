@@ -74,11 +74,10 @@
   background-color: var(--widget-bg-color);
   padding-bottom: 4.7rem;
   padding-left: 1.7rem;
-  border-radius: 0rem 0rem 4rem 4rem;
+  border-radius: 0 0 4rem 4rem;
   > .title {
     font-size: 1.4rem;
     font-weight: 700;
-    padding-left: 1.6rem;
   }
   @media screen and (max-width: 430px) {
     display: none;
@@ -93,22 +92,5 @@
   padding-top: 2rem;
 }
 
-.blockValues {
-  display: flex;
-  flex-direction: row;
-  gap: 0.3rem;
-}
 
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 
-  > .desc {
-    font-size: 1.2rem;
-  }
-
-  > .temp {
-    font-size: 1.6rem;
-  }
-}

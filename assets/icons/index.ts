@@ -13,3 +13,8 @@ export {default as Temp} from './components/Temp';
 export {default as Vector} from './components/Vector';
 export {default as Weather} from './components/Weather';
 export {default as Wind} from './components/Wind';
+export {default as Friday} from './components/Friday';
+export {default as Saturday} from './components/Sat';
+export {default as Sunday} from './components/Sunday';
+export {default as Monday} from './components/Mon';
+export {default as Tuesday} from './components/Tues';

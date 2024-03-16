@@ -3,121 +3,105 @@ import Image from "next/image";
 import {useCurrentWeatherByLocation} from "@/hooks/useCurrentWeather";
 import {useEffect} from "react";
 import {ICoordination} from "@/mock/mockForLocations";
+import {WeatherConditionInterface, WeekDays} from "@/interfaces/weather-condition-interface";
+import {Temp, Wind, Drop, Sun} from "@/assets/icons";
+import {WeatherCard} from "@/layout/weatherWidget/WeatherCard/WeatherCard";
+import {Monday, Tuesday, Friday, Saturday, Sunday} from "@/assets/icons"
+import {Clock} from "@/assets/icons";
 
-let tempCondition = {
-    iconUrl: '/icons/temp.svg',
-    desc: 'Real Feel',
-    temp: '30'
-};
-let windCondition = {
-    iconUrl: '/icons/wind.svg',
-    desc: 'Wind',
-    speed: '0.8 km/hr'
-}
-let rainCondition = {
-    iconUrl: '/icons/drop.svg',
-    desc: 'Chance of rain',
-    precipitation: '2%'
-}
-let visibilityCondition = {
-    iconUrl: '/icons/Sun.svg',
-    desc: 'Visibility',
-    value: '4'
-}
+let weatherCondition: WeatherConditionInterface[] = [
+    {
+        id: 1,
+        icon: <Temp/>,
+        desc: 'Real Feel',
+        value: '30'
+    },
+    {
+        id: 2,
+        icon: <Wind/>,
+        desc: 'Wind',
+        value: '0.8 km/hr'
+    },
+    {
+        id: 3,
+        icon: <Drop/>,
+        desc: 'Chance of rain',
+        value: '2%'
+    },
+    {
+        id: 4,
+        icon: <Sun/>,
+        desc: 'Visibility',
+        value: '4'
+    }
+]
 
-const weekdays = [
+const weekdays: WeekDays[] = [
     {
-        week: 'FR',
-        weekIcon: '/icons/weekDays/FR.svg'
+        name: 'FR',
+        icon: <Friday/>
     },
     {
-        week: 'SAT',
-        weekIcon: '/icons/weekDays/SAT.svg'
+        name: 'SAT',
+        icon: <Saturday/>
     },
     {
-        week: 'SUN',
-        weekIcon: '/icons/weekDays/SUN.svg'
+        name: 'SUN',
+        icon: <Sunday/>
     },
     {
-        week: 'MON',
-        weekIcon: '/icons/weekDays/MON.svg'
+        name: 'MON',
+        icon: <Monday/>
     },
     {
-        week: 'TUES',
-        weekIcon: '/icons/weekDays/TUES.svg'
+        name: 'TUES',
+        icon: <Tuesday/>
     },
 
 ]
 const WeatherWidget = () => {
-    let time='6:00';
+    let time = '6:00';
     const initialCoord: ICoordination = {lat: '-75.499901', lon: '-75.499901'};
     let parsedSelectCoord;
     useEffect(() => {
-        const selectCoord=localStorage.getItem('selectCoord');
-        if(selectCoord!==null){
-            parsedSelectCoord=JSON.parse(selectCoord);
-        }
-        else {
-            parsedSelectCoord=initialCoord;
+        const selectCoord = localStorage.getItem('selectCoord');
+        if (selectCoord !== null) {
+            parsedSelectCoord = JSON.parse(selectCoord);
+        } else {
+            parsedSelectCoord = initialCoord;
         }
     }, []);
     const {status, data} = useCurrentWeatherByLocation(parsedSelectCoord)
+
     if (status === 'success') {
         let currentData = data.list[0];
-        time=currentData.dt_txt.substring(11,16)
-        tempCondition.temp = `${currentData.main.feels_like}°`;
-        windCondition.speed = currentData.wind.speed;
-        rainCondition.precipitation = currentData.pop;
-        visibilityCondition.value = currentData.visibility;
+        let {dt_txt, main, wind, pop, visibility} = currentData;
+        time = currentData.dt_txt.substring(11, 16);
+        weatherCondition[0].value = `${main.feels_like}°`;
+        weatherCondition[1].value = wind.speed;
+        weatherCondition[2].value = pop;
+        weatherCondition[3].value = visibility;
     }
 
     return (
         <div className={s.weatherWidget}>
             <div className={s.weekdays}>
                 {
-                    weekdays.map(day => <div key={day.week} className={s.daysBlock}>
-                        <span>{day.week}</span>
-                        <Image src={day.weekIcon} width={24} height={24} alt={day.week}/>
+                    weekdays.map(day => <div key={day.name} className={s.daysBlock}>
+                        <span>{day.name}</span>
+                        {day.icon}
                     </div>)
                 }
             </div>
             <div className={s.timeGmt}>
-                <Image src={'/icons/clock.svg'} width={20} height={20} alt={'clock'}/>
+                <Clock/>
                 <span>{time} GMT</span>
             </div>
             <div className={s.airConditions}>
                 <span className={s.title}>AIR CONDITIONS</span>
                 <div className={s.airInfoBlock}>
-                    <div className={s.blockValues}>
-                        <Image src={tempCondition.iconUrl} width={25} height={25} alt={tempCondition.desc}/>
-                        <div className={s.info}>
-                            <span className={s.desc}>{tempCondition.desc}</span>
-                            <span className={s.temp}>{tempCondition.temp}</span>
-                        </div>
-                    </div>
-                    <div className={s.blockValues}>
-                        <Image src={windCondition.iconUrl} width={25} height={25} alt={windCondition.desc}/>
-                        <div className={s.info}>
-                            <span className={s.desc}>{windCondition.desc}</span>
-                            <span className={s.temp}>{windCondition.speed}</span>
-                        </div>
-                    </div>
-                    <div className={s.blockValues}>
-                        <Image src={rainCondition.iconUrl} width={25} height={25} alt={rainCondition.desc}/>
-                        <div className={s.info}>
-                            <span className={s.desc}>{rainCondition.desc}</span>
-                            <span className={s.temp}>{rainCondition.precipitation}%</span>
-                        </div>
-                    </div>
-                    <div className={s.blockValues}>
-                        <Image src={visibilityCondition.iconUrl} width={25} height={25} alt={visibilityCondition.desc}/>
-                        <div className={s.info}>
-                            <span className={s.desc}>{visibilityCondition.desc}</span>
-                            <span className={s.temp}>{visibilityCondition.value}</span>
-                        </div>
-                    </div>
+                    {weatherCondition.map((item) => <WeatherCard key={item.value} card={item}/>)}
                 </div>
-
             </div>
         </div>
     );
