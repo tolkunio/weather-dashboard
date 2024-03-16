@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
-import Layout from "@/app/components/shared/Layout";
-import NavbarWidget from "@/app/components/elements/navbarWidget/NavbarWidget";
-import MainContent from "@/app/components/elements/mainContent/MainContent";
-import WeatherWidget from "@/app/components/elements/weatherWidget/WeatherWidget";
+import Layout from "@/components/Layout";
+import NavbarWidget from "@/layout/navbarWidget/NavbarWidget";
+import MainContent from "@/layout/mainContent/MainContent";
+import WeatherWidget from "@/layout/weatherWidget/WeatherWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
