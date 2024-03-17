@@ -1,4 +1,4 @@
-import HeadingSection from "@/layout/headingSection/HeadingSection";
+import HeadingSection from "@/layout/HeadingSection/HeadingSection";
 import {LayoutProps} from "@/layout/Layout.props";
 import s from './Layout.module.scss'
 import {ReactElement} from "react";

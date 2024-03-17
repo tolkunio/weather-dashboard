@@ -2,7 +2,7 @@ import Head from "next/head";
 import {Inter} from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import NavbarWidget from "@/layout/navbarWidget/NavbarWidget";
-import MainContent from "@/layout/mainContent/MainContent";
+import Main from "@/layout/Main/Main";
 import WeatherWidget from "@/layout/weatherWidget/WeatherWidget";
 import {Layout} from "@/layout/Layout";
 
@@ -21,7 +21,7 @@ function Home() {
                 <Layout>
                     <div className={styles.content}>
                         <NavbarWidget/>
-                        <MainContent/>
+                        <Main/>
                         <WeatherWidget/>
                     </div>
                 </Layout>
@@ -30,5 +30,4 @@ function Home() {
         </>
     );
 }
-
 export default Home;

@@ -2,12 +2,12 @@ import s from './WeatherWidget.module.scss';
 import Image from "next/image";
 import {useCurrentWeatherByLocation} from "@/hooks/useCurrentWeather";
 import {useEffect} from "react";
-import {ICoordination} from "@/mock/mockForLocations";
 import {WeatherConditionInterface, WeekDays} from "@/interfaces/weather-condition-interface";
 import {Temp, Wind, Drop, Sun} from "@/assets/icons";
 import {WeatherCard} from "@/layout/weatherWidget/WeatherCard/WeatherCard";
 import {Monday, Tuesday, Friday, Saturday, Sunday} from "@/assets/icons"
 import {Clock} from "@/assets/icons";
+import {ICoordination} from "@/interfaces/location-interface";
 
 let weatherCondition: WeatherConditionInterface[] = [
     {

@@ -1,23 +1,23 @@
 import s from './Activities.module.scss';
-import Image from "next/image";
-import Activity from "@/layout/mainContent/activities/activity/Activity";
+import Activity from "@/layout/Main/activities/activity/Activity";
 import {Heart} from "@/assets/icons";
+import {ActivityInterface} from "@/interfaces/activity-interface";
 
-const activites = [
+const activites:ActivityInterface[] = [
     {
-        imgSrc: '/images/firstPlace.png',
+        imgUrl: '/images/firstPlace.png',
         distance: '2km away'
     },
     {
-        imgSrc: '/images/secondPlace.png',
+        imgUrl: '/images/secondPlace.png',
         distance: '1.5km away'
     },
     {
-        imgSrc: '/images/thirdPlace.png',
+        imgUrl: '/images/thirdPlace.png',
         distance: '3km away'
     },
     {
-        imgSrc: '/images/fourthPlace.png',
+        imgUrl: '/images/fourthPlace.png',
         distance: '500m away'
     },
 
@@ -33,7 +33,7 @@ const Activities = () => {
             <div className={s.content}>
                 {
                     activites.map(item =>
-                    <Activity key={item.imgSrc} imgSrc={item.imgSrc} distance={item.distance}/>)
+                    <Activity key={item.imgUrl} imgSrc={item.imgUrl} distance={item.distance}/>)
                 }
             </div>
         </div>

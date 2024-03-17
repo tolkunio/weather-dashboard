@@ -1,10 +1,10 @@
 import Image from "next/image";
 import s from './Forecast.module.scss';
-import ForecastElement from "@/layout/mainContent/forecast/ForecastElement/ForecastElement";
+import ForecastElement from "@/layout/Main/forecast/ForecastElement/ForecastElement";
 import {useCurrentWeatherByLocation} from "@/hooks/useCurrentWeather";
-import {ICoordination} from "@/mock/mockForLocations";
 import {useEffect} from "react";
 import {Clock} from "@/assets/icons";
+import {ICoordination} from "@/interfaces/location-interface";
 
 const Forecast = () => {
     //default coordinate:New York
