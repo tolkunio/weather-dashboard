@@ -7,7 +7,7 @@ import {Temp, Wind, Drop, Sun} from "@/assets/icons";
 import {WeatherCard} from "@/layout/weatherWidget/WeatherCard/WeatherCard";
 import {Monday, Tuesday, Friday, Saturday, Sunday} from "@/assets/icons"
 import {Clock} from "@/assets/icons";
-import {ICoordination} from "@/interfaces/location-interface";
+import {ICoordination} from "@/interfaces/data-response-interface";
 
 let weatherCondition: WeatherConditionInterface[] = [
     {

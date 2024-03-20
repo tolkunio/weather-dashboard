@@ -1,5 +1,9 @@
-import {ILocation} from "@/interfaces/location-interface";
-
+import {ICoordination} from "@/interfaces/data-response-interface";
+export interface ILocation{
+    id:number,
+    city:string,
+    coord:ICoordination
+}
 export const mockLocations:ILocation[]=[
     {
         id:Math.random(),

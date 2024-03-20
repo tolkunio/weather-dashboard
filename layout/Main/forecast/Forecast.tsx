@@ -4,8 +4,10 @@ import ForecastElement from "@/layout/Main/forecast/ForecastElement/ForecastElem
 import {useCurrentWeatherByLocation} from "@/hooks/useCurrentWeather";
 import {useEffect} from "react";
 import {Clock} from "@/assets/icons";
-import {ICoordination} from "@/interfaces/location-interface";
-
+import {ICoordination} from "@/interfaces/data-response-interface";
+type PropsTYpe={
+    data:[]
+}
 const Forecast = () => {
     //default coordinate:New York
     const initialCoord: ICoordination = {lat: '-75.499901', lon: '-75.499901'};

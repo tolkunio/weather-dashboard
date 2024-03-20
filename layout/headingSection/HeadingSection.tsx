@@ -1,15 +1,17 @@
 import s from './HeadingSection.module.scss';
 import Image from "next/image";
 import {useState, useEffect} from "react";
-import {mockLocations} from "@/mock/mockForLocations";
-import {ICoordination} from "@/mock/mockForLocations";
-import DropDown from "@/components/DropDown/DropDown";
+import CustomSelect from "@/components/select/CustomSelect";
 import {useCurrentWeatherByLocation} from "@/hooks/useCurrentWeather";
 import {IHeadingSection} from "@/types/IWeather";
-import {Location} from "@/assets/icons";
-import {Arrow} from "@/assets/icons";
-import {Cloud} from "@/assets/icons";
+import {Location,Cloud,Arrow} from "@/assets/icons";
+import {ICoordination,IData} from "@/interfaces/data-response-interface";
+import {mockLocations} from "@/mock/mockForLocations";
+import {ArrowDown} from "@/assets/icons";
 
+type PropsType={
+    data:IData
+}
 let initialData: IHeadingSection = {
     cityName: 'New York',
     temp: 10,
@@ -17,15 +19,15 @@ let initialData: IHeadingSection = {
     coordination: {lat: '40.714272', lon: '-74.005966'}
 };
 
-const HeadingSection = () => {
+const HeadingSection = ({data}:PropsType) => {
     const [headingData, setHeadingData] = useState<IHeadingSection>(initialData);
-    const [showDropDown, setShowDropDown] = useState<boolean>(false);
-    const [selectCoord, setSelectCoord] = useState<ICoordination>(initialData.coordination);
-    const {data, status, isLoading, isSuccess, refetch} = useCurrentWeatherByLocation(selectCoord);
+    const [showSelect, setShowSelect] = useState<boolean>(false);
+    const [selectCoord, setSelectCoord] = useState(initialData.coordination);
+    // const {data, status, isLoading, isSuccess, refetch} = useCurrentWeatherByLocation(selectCoord);
     const currentDate = new Date().toDateString();
 
     useEffect(() => {
-        refetch();
+      
     }, [selectCoord]);
 
     useEffect(() => {
@@ -46,22 +48,23 @@ const HeadingSection = () => {
         localStorage.setItem(JSON.stringify(coord), 'selectCoord');
     };
 
-    const toggleDropDown = () => {
-        setShowDropDown(!showDropDown);
+    const toggleSelect = () => {
+        setShowSelect(!showSelect);
     }
     return (
         <header className={s.header}>
             <div className={s.location}>
                 <Location/>
                 <span className={s.city}>{headingData.cityName}</span>
-                <button className={s.dropDownToggle} onClick={toggleDropDown}>
-                    <Arrow/>
+                <button className={s.btnToggle} onClick={toggleSelect}>
+                    {showSelect?<ArrowDown/>:<Arrow/>}
+
                 </button>
                 {
-                    showDropDown && (<div className={s.dropDown}>
-                        <DropDown cities={mockLocations} showDropDown={true}
-                                  toggleDropDown={toggleDropDown}
-                                  coordSelection={coordSelection}/>
+                    showSelect && (<div className={s.select}>
+                        <CustomSelect cities={mockLocations} showSelect={true}
+                                      toggleSelect={toggleSelect}
+                                      coordSelection={coordSelection}/>
                     </div>)
                 }
             </div>

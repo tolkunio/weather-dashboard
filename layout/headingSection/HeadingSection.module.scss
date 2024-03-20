@@ -27,18 +27,19 @@
     padding-right: 1rem ;
   }
 }
-.dropDown{
+.select{
   position: absolute;
   top:0;
-  left: 15.5rem;
+  left: 16.5rem;
   width: 100%;
   min-width: 14rem;
 }
-.dropDownToggle{
+.btnToggle{
   background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
+  color: var(--font-color)
 }
 
 .navbarWidget {
