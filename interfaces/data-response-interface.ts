@@ -16,6 +16,8 @@ export interface ICity {
 export interface IList {
     dt: number
     dt_txt: string,
+    pop:number,
+    visibility:number,
     main:IMain,
     weather:IWeather[],
     wind:IWind

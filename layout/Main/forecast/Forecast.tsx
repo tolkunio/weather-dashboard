@@ -1,29 +1,12 @@
 import Image from "next/image";
 import s from './Forecast.module.scss';
 import ForecastElement from "@/layout/Main/forecast/ForecastElement/ForecastElement";
-import {useCurrentWeatherByLocation} from "@/hooks/useCurrentWeather";
-import {useEffect} from "react";
 import {Clock} from "@/assets/icons";
-import {ICoordination} from "@/interfaces/data-response-interface";
-type PropsTYpe={
-    data:[]
+import {IList} from "@/interfaces/data-response-interface";
+type PropsType={
+    list:IList[] |undefined
 }
-const Forecast = () => {
-    //default coordinate:New York
-    const initialCoord: ICoordination = {lat: '-75.499901', lon: '-75.499901'};
-    let parsedSelectCoord;
-    useEffect(() => {
-        const selectCoord=localStorage.getItem('selectCoord');
-        if(selectCoord!==null){
-            parsedSelectCoord=JSON.parse(selectCoord);
-        }
-        else {
-            parsedSelectCoord=initialCoord;
-        }
-    }, []);
-
-
-    const {status, data} = useCurrentWeatherByLocation(parsedSelectCoord);
+const Forecast = ({list}:PropsType) => {
     return (
         <div className={s.forecast}>
             <div className={s.titleBlock}>
@@ -32,11 +15,11 @@ const Forecast = () => {
             </div>
             <div className={s.forecastChart}>
                 <Image className={s.img} src='/images/vector.png' width={730} height={63} alt={'vector'}/>
-                {status === 'success' && data.list.map((item:any)=>
+                {list && list.map((item) =>
                     <ForecastElement key={item.dt}
                                      temp={item.main.temp}
                                      time={item.dt_txt.substring(11, 16)}
-                                     wind={item.wind.speed}/>).splice(0,7)}
+                                     wind={item.wind.speed}/>).splice(0, 7)}
             </div>
             <button className={s.btn}>5-day forecast</button>
         </div>

@@ -1,14 +1,12 @@
 import s from './WeatherWidget.module.scss';
-import Image from "next/image";
-import {useCurrentWeatherByLocation} from "@/hooks/useCurrentWeather";
-import {useEffect} from "react";
 import {WeatherConditionInterface, WeekDays} from "@/interfaces/weather-condition-interface";
-import {Temp, Wind, Drop, Sun} from "@/assets/icons";
+import {Monday, Tuesday, Friday, Saturday, Sunday, Temp, Wind, Drop, Sun, Clock} from "@/assets/icons";
 import {WeatherCard} from "@/layout/weatherWidget/WeatherCard/WeatherCard";
-import {Monday, Tuesday, Friday, Saturday, Sunday} from "@/assets/icons"
-import {Clock} from "@/assets/icons";
-import {ICoordination} from "@/interfaces/data-response-interface";
+import {IList} from "@/interfaces/data-response-interface";
 
+type PropsType = {
+    list: IList[] | undefined
+}
 let weatherCondition: WeatherConditionInterface[] = [
     {
         id: 1,
@@ -59,31 +57,18 @@ const weekdays: WeekDays[] = [
     },
 
 ]
-const WeatherWidget = () => {
-    let time = '6:00';
-    const initialCoord: ICoordination = {lat: '-75.499901', lon: '-75.499901'};
-    let parsedSelectCoord;
-    useEffect(() => {
-        const selectCoord = localStorage.getItem('selectCoord');
-        if (selectCoord !== null) {
-            parsedSelectCoord = JSON.parse(selectCoord);
-        } else {
-            parsedSelectCoord = initialCoord;
-        }
-    }, []);
-    const {status, data} = useCurrentWeatherByLocation(parsedSelectCoord)
-
-    if (status === 'success') {
-        let currentData = data.list[0];
-        let {dt_txt, main, wind, pop, visibility} = currentData;
-        time = currentData.dt_txt.substring(11, 16);
-        weatherCondition[0].value = `${main.feels_like}°`;
-        weatherCondition[1].value = wind.speed;
-        weatherCondition[2].value = pop;
-        weatherCondition[3].value = visibility;
+const WeatherWidget = ({list}: PropsType) => {
+    let time = '9:00'
+    if (list) {
+        time = list[0].dt_txt.substring(11, 16);
+        weatherCondition[0].value = `${list[0].main.feels_like}°`;
+        weatherCondition[1].value = list[0].wind.speed as string;
+        weatherCondition[2].value = list[0].pop as string;
+        weatherCondition[3].value = list[0].visibility as string;
     }
 
     return (
+
         <div className={s.weatherWidget}>
             <div className={s.weekdays}>
                 {
@@ -100,7 +85,10 @@ const WeatherWidget = () => {
             <div className={s.airConditions}>
                 <span className={s.title}>AIR CONDITIONS</span>
                 <div className={s.airInfoBlock}>
-                    {weatherCondition.map((item) => <WeatherCard key={item.value} card={item}/>)}
+                    {
+                        weatherCondition.map((item) =>
+                            <WeatherCard key={item.value} card={item}/>)
+                    }
                 </div>
             </div>
         </div>

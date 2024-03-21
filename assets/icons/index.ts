@@ -1,5 +1,6 @@
 export {default as Arrow} from './components/Arrow';
 export {default as ArrowDown} from './components/ArrowDown';
+export {default as ArrowUp} from './components/arrowUp';
 export {default as City} from './components/City';
 export {default as Clock} from './components/Clock';
 export {default as Cloud} from './components/Cloud';

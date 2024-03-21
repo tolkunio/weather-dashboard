@@ -2,7 +2,7 @@ import s from './ForecastElement.module.scss';
 import {Forecast} from "@/assets/icons";
 export type ForecastELementPropsType={
         temp:number,
-        wind:string,
+        wind:number,
         time:string
 }
 const ForecastElement = ({temp,wind,time}:ForecastELementPropsType) => {

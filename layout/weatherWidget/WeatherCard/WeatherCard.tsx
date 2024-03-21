@@ -9,7 +9,7 @@ export const WeatherCard = ({card}:PropsType) => {
             {card.icon}
             <div className={s.info}>
                 <span className={s.desc}>{card.desc}</span>
-                <span className={s.value}>{card.value}</span>
+                <span className={s.value}>{`${card.value}%`}</span>
             </div>
         </div>
     );
