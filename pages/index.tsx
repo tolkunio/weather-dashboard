@@ -16,7 +16,7 @@ import Image from "next/image";
 import {Inter} from "next/font/google";
 const inter = Inter({subsets: ["latin"]});
 
-const capitalizeFirstLetter=(sentence)=>{
+const capitalizeFirstLetter=(sentence:string)=>{
     return sentence.split(' ').map((el)=>el.charAt(0).toUpperCase()+el.slice(1)).join(' ');
 };
 function Home() {

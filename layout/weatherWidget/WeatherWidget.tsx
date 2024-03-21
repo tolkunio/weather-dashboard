@@ -62,9 +62,9 @@ const WeatherWidget = ({list}: PropsType) => {
     if (list) {
         time = list[0].dt_txt.substring(11, 16);
         weatherCondition[0].value = `${list[0].main.feels_like}°`;
-        weatherCondition[1].value = list[0].wind.speed as string;
-        weatherCondition[2].value = list[0].pop as string;
-        weatherCondition[3].value = list[0].visibility as string;
+        weatherCondition[1].value = list[0].wind.speed;
+        weatherCondition[2].value = list[0].pop;
+        weatherCondition[3].value = list[0].visibility;
     }
 
     return (
