@@ -1,0 +1,26 @@
+.selectItem {
+  user-select: none;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 36px;
+  padding: 6px 12px;
+
+  font-size: 16px;
+  line-height: 1;
+  color: var(--color-dark-500);
+
+  &[data-disabled] {
+    pointer-events: none;
+    color: var(--color-dark-700);
+  }
+
+  &[data-highlighted] {
+    color: var(--color-accent-500);
+    background-color: var(--color-accent-50);
+    outline: none;
+  }
+}
