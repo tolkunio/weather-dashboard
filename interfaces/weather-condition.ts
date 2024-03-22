@@ -1,6 +1,6 @@
 import {JSX} from "react";
 
-export interface WeatherConditionInterface {
+export interface WeatherCondition {
     id:number,
     icon:JSX.Element,
     desc:string,

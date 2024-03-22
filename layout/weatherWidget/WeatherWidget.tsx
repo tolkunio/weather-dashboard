@@ -1,5 +1,5 @@
 import s from './WeatherWidget.module.scss';
-import {WeatherConditionInterface, WeekDays} from "@/interfaces/weather-condition-interface";
+import {WeatherCondition, WeekDays} from "@/interfaces/weather-condition";
 import {Monday, Tuesday, Friday, Saturday, Sunday, Temp, Wind, Drop, Sun, Clock} from "@/assets/icons";
 import {WeatherCard} from "@/layout/weatherWidget/WeatherCard/WeatherCard";
 import {IList} from "@/interfaces/data-response-interface";
@@ -7,7 +7,7 @@ import {IList} from "@/interfaces/data-response-interface";
 type PropsType = {
     list: IList[] | undefined
 }
-let weatherCondition: WeatherConditionInterface[] = [
+let weatherCondition: WeatherCondition[] = [
     {
         id: 1,
         icon: <Temp/>,

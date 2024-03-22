@@ -1,6 +1,6 @@
 import Image from "next/image";
 import s from './Forecast.module.scss';
-import ForecastElement from "@/layout/Main/forecast/ForecastElement/ForecastElement";
+import ForecastElement from "@/layout/main/forecast/ForecastElement/ForecastElement";
 import {Clock} from "@/assets/icons";
 import {IList} from "@/interfaces/data-response-interface";
 type PropsType={

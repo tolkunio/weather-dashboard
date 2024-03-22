@@ -1,6 +1,6 @@
 import s from "@/styles/Home.module.scss";
 import NavbarWidget from "@/layout/navbarWidget/NavbarWidget";
-import Main from "@/layout/Main/Main";
+import Main from "@/layout/main/Main";
 import WeatherWidget from "@/layout/weatherWidget/WeatherWidget";
 import HeadMeta from "@/components/headMeta/HeadMeta"
 import {useState} from "react";

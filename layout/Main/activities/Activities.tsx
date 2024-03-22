@@ -1,5 +1,5 @@
 import s from './Activities.module.scss';
-import Activity from "@/layout/Main/activities/activity/Activity";
+import Activity from "@/layout/main/activities/activity/Activity";
 import {Heart} from "@/assets/icons";
 import {ActivityInterface} from "@/interfaces/activity-interface";
 

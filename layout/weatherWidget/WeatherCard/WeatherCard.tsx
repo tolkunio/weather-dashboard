@@ -1,7 +1,7 @@
 import s from './WeatherCard.module.scss';
-import {WeatherConditionInterface} from "@/interfaces/weather-condition-interface";
+import {WeatherCondition} from "@/interfaces/weather-condition";
 type PropsType={
-    card:WeatherConditionInterface
+    card:WeatherCondition
 }
 export const WeatherCard = ({card}:PropsType) => {
     return (
